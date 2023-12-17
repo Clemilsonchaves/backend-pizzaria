@@ -15,7 +15,7 @@ import uploadConfig  from "./config/multer";
 
 const router = Router();
 
-const upload = multer(uploadConfig.upload('./tmp'));
+const upload = multer(uploadConfig.upload("./tmp"));
 
 
 //-- Rotas User --
@@ -31,3 +31,6 @@ router.get('/category', isAuthenticated, new ListCategoryController().handle)   
 router.post('/product', isAuthenticated, upload.single('file'), new CreateProductController().handle)  // Cadastrar um produto
 
 export { router };
+
+
+ 
