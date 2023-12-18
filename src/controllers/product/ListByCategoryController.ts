@@ -15,3 +15,5 @@ class ListByCategoryController {
 
     }
 }
+
+export { ListByCategoryController }
