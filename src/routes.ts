@@ -11,8 +11,11 @@ import { ListCategoryController } from "./controllers/category/ListCategoryContr
 import { CreateProductController } from "./controllers/product/CreateProductController";
 import { ListByCategoryController } from "./controllers/product/ListByCategoryController";
 
-import { CreateOrderController } from './controllers/order/CreateOrderController';
+import { CreateOrderController } from "./controllers/order/CreateOrderController";
 import { RemoveOrderController } from "./controllers/order/RemoveOrderController";
+
+import { AddItemController } from  "./controllers/order/AddItemController";
+import { RemoveItemController } from "./controllers/order/RemoveItemController";
 
 import { isAuthenticated  } from "./middlewares/isAuthenticated";
 
@@ -40,6 +43,9 @@ router.get('/category/product',isAuthenticated, new ListByCategoryController().h
 // -- ROTAS ORDER
 router.post('/order', isAuthenticated, new CreateOrderController().handle) // Criando uma Order
 router.delete('/order', isAuthenticated, new RemoveOrderController().handle) // Deletando uma Order
+
+router.post('/order/add', isAuthenticated, new AddItemController().handle) // Adicionando produto numa order
+router.delete('/order/remove', isAuthenticated, new RemoveItemController().handle) // Removendo um produto da Mesa
 
 export { router };
 
