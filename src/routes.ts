@@ -16,6 +16,10 @@ import { RemoveOrderController } from "./controllers/order/RemoveOrderController
 
 import { AddItemController } from  "./controllers/order/AddItemController";
 import { RemoveItemController } from "./controllers/order/RemoveItemController";
+import { SendOrderController } from "./controllers/order/SendOrderController";
+
+import { ListOrdersController } from "./controllers/order/ListOrdersController";
+import { DetailOrderController }  from "./controllers/order/DetailOrderController"; 
 
 import { isAuthenticated  } from "./middlewares/isAuthenticated";
 
@@ -47,7 +51,12 @@ router.delete('/order', isAuthenticated, new RemoveOrderController().handle) // 
 router.post('/order/add', isAuthenticated, new AddItemController().handle) // Adicionando produto numa order
 router.delete('/order/remove', isAuthenticated, new RemoveItemController().handle) // Removendo um produto da Mesa
 
-export { router };
+router.put('/order/send', isAuthenticated, new SendOrderController().handle) // Enviar um pedido
+
+router.get('/orders', isAuthenticated, new ListOrdersController().handle) // Chamando  os ultimos pedidos
+router.get('/order/detail', isAuthenticated, new DetailOrderController().handle) //  Ver os detalhes do pedido
+
+export { router }; 
 
 
  
